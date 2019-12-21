@@ -2,7 +2,7 @@ package sample.Storage;
 
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
-public class StorageElementary extends AbstractStorage {
+public class StorageElementary implements Storage {
     private static DualHashBidiMap<String,String> storage = new DualHashBidiMap<>();
 
     static {

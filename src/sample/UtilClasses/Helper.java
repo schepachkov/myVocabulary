@@ -7,15 +7,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Helper {
 
     public static void open(String text){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Helper.class.getResource("/sample/fxmlFiles/"+ text));
-        try {
-            loader.load();
-        } catch (IOException e) {
+        FXMLLoader loader = null;
+        try(InputStream stream = Helper.class.getResourceAsStream("/sample/fxmlFiles/"+ text)){
+            loader = new FXMLLoader();
+            //loader.setLocation(Helper.class.getResource("/sample/fxmlFiles/"+ text));
+            loader.load(stream);
+        } catch (IOException e){
             e.printStackTrace();
         }
         Parent root = loader.getRoot();
@@ -38,4 +40,14 @@ public class Helper {
     public static void toConsole(String text){
         System.out.println(text);
     }
+
+    /*public static Object getController(String nameFxml){
+        FXMLLoader fxmlLoader = null;
+        try(InputStream stream = Helper.class.getResourceAsStream("/sample/fxmlFiles/"+ nameFxml)){
+            fxmlLoader.load(stream);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return fxmlLoader.getController();
+    }*/
 }

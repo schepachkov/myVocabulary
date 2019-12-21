@@ -38,7 +38,8 @@ public class ControllerMain {
     void elemOnAction(ActionEvent event) {
         Helper.closePreviewAndShowNextWindow(btnElem,"windowStudies.fxml");
         StorageElementary storageElementary = new StorageElementary();
-        ControllerStudies controllerStudies = new ControllerStudies(storageElementary.getStorage());
+        ControllerStudies controllerStudies = new ControllerStudies();
+        controllerStudies.setStorage(storageElementary.getStorage());
         controllerStudies.startWork();
 
     }

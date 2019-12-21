@@ -2,7 +2,7 @@ package sample.Storage;
 
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
-public class StorageIrregularVerbs extends AbstractStorage{
+public class StorageIrregularVerbs implements Storage {
 
     private static DualHashBidiMap<String,String> storage = new DualHashBidiMap<>();
 
