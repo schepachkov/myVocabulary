@@ -36,9 +36,10 @@ public class ControllerMain {
 
     @FXML
     void elemOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnElem,"windowStudies.fxml");
+        String nameFXML = "windowStudies.fxml";
+        Helper.closePreviewAndShowNextWindow(btnElem, nameFXML);
         StorageElementary storageElementary = new StorageElementary();
-        ControllerStudies controllerStudies = new ControllerStudies();
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.getController(nameFXML);
         controllerStudies.setStorage(storageElementary.getStorage());
         controllerStudies.startWork();
 

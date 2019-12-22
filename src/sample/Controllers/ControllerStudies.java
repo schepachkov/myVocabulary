@@ -16,10 +16,6 @@ public class ControllerStudies {
     private DualHashBidiMap<String,String> storage;
     private String text = "";
 
-    public ControllerStudies(){
-
-    }
-
     public void setStorage(DualHashBidiMap<String, String> storage) {
         this.storage = storage;
     }
@@ -37,7 +33,6 @@ public class ControllerStudies {
     }
 
     private void checkWord() {
-
         Helper.toConsole(text);
     }
 
@@ -62,14 +57,4 @@ public class ControllerStudies {
             txtFieldForWritten.clear();
         }
     }
-
-    public TextField getTxtFieldDisabled() {
-        return txtFieldDisabled;
-    }
-
-
-    public TextField getTxtFieldForWritten() {
-        return txtFieldForWritten;
-    }
-
 }

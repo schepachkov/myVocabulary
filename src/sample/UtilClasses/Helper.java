@@ -41,13 +41,13 @@ public class Helper {
         System.out.println(text);
     }
 
-    /*public static Object getController(String nameFxml){
-        FXMLLoader fxmlLoader = null;
+    public static Object getController(String nameFxml){
+        FXMLLoader fxmlLoader = new FXMLLoader();
         try(InputStream stream = Helper.class.getResourceAsStream("/sample/fxmlFiles/"+ nameFxml)){
             fxmlLoader.load(stream);
         }catch (IOException e){
             e.printStackTrace();
         }
         return fxmlLoader.getController();
-    }*/
+    }
 }
