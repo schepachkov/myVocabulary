@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
-import sample.Storage.StorageElementary;
+import sample.Storage.*;
 import sample.UtilClasses.Helper;
 
 import java.io.IOException;
@@ -37,28 +38,50 @@ public class ControllerMain {
     @FXML
     void elemOnAction(ActionEvent event) {
         String nameFXML = "windowStudies.fxml";
-        Helper.closePreviewAndShowNextWindow(btnElem, nameFXML);
-        StorageElementary storageElementary = new StorageElementary();
-        ControllerStudies controllerStudies = (ControllerStudies) Helper.getController(nameFXML);
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnElem, nameFXML);
+        Storage storageElementary = new StorageElementary();
         controllerStudies.setStorage(storageElementary.getStorage());
-        controllerStudies.startWork();
+        Thread thread = new Thread(controllerStudies);
+        thread.setDaemon(true);
+        thread.start();
 
     }
 
     @FXML
     void preInterOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnPreInter,"windowStudies.fxml");
+        String nameFXML = "windowStudies.fxml";
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnInter, nameFXML);
+        Storage storagePreIntermediate = new StoragePreIntermediate();
+        controllerStudies.setStorage(storagePreIntermediate.getStorage());
+        Thread thread = new Thread(controllerStudies);
+        thread.setDaemon(true);
+        thread.start();
     }
 
     @FXML
     void irregOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnIrreg,"windowStudies.fxml");
+        String nameFXML = "windowStudies.fxml";
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnIrreg, nameFXML);
+        Storage storageIrregularVerbs = new StorageIrregularVerbs();
+        controllerStudies.setStorage(storageIrregularVerbs.getStorage());
+        Thread thread = new Thread(controllerStudies);
+        thread.setDaemon(true);
+        thread.start();
     }
 
     @FXML
     void interOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnInter,"windowStudies.fxml");
+        String nameFXML = "windowStudies.fxml";
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnInter, nameFXML);
+        Storage storageIntermediate = new StorageIntermediate();
+        controllerStudies.setStorage(storageIntermediate.getStorage());
+        Thread thread = new Thread(controllerStudies);
+        thread.setDaemon(true);
+        thread.start();
     }
+
+
+
 
 
 
