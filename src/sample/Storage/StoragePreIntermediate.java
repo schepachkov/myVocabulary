@@ -8,6 +8,7 @@ public class StoragePreIntermediate implements Storage {
 
     static {
         //here new words put into the storage
+        storage.put("Прежде всего","first of all");
 
     }
     @Override

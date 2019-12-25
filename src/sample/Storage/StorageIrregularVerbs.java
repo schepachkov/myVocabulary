@@ -8,6 +8,7 @@ public class StorageIrregularVerbs implements Storage {
 
     static {
         //here new words put into the storage
+        storage.put("видеть","see saw seen");
 
     }
     @Override

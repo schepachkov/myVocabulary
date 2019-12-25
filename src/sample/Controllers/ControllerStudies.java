@@ -147,12 +147,13 @@ public class ControllerStudies implements Runnable {
     // They will need in the "irregular verbs" and in several difficult words.
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
-        if (keyEvent.getText().matches("[a-zA-Z]") && storageSize > 0){
-            synchronousQueue.put(keyEvent.getText().toLowerCase());
-        }else {
-            deleteLast();
+        if (storageSize > 0) {
+            if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
+                synchronousQueue.put(keyEvent.getText().toLowerCase());
+            } else {
+                deleteLast();
+            }
         }
-
     }
 
 }
