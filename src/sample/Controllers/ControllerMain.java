@@ -1,17 +1,11 @@
 package sample.Controllers;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 import sample.Storage.*;
 import sample.UtilClasses.Helper;
 
-import java.io.IOException;
 
 public class ControllerMain {
 
@@ -20,9 +14,6 @@ public class ControllerMain {
 
     @FXML
     private Button btnPreInter;
-
-    @FXML
-    private Button btnAdd;
 
     @FXML
     private Button btnElem;
@@ -50,7 +41,7 @@ public class ControllerMain {
     @FXML
     void preInterOnAction(ActionEvent event) {
         String nameFXML = "windowStudies.fxml";
-        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnInter, nameFXML);
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnPreInter, nameFXML);
         Storage storagePreIntermediate = new StoragePreIntermediate();
         controllerStudies.setStorage(storagePreIntermediate.getStorage());
         Thread thread = new Thread(controllerStudies);
@@ -78,16 +69,6 @@ public class ControllerMain {
         Thread thread = new Thread(controllerStudies);
         thread.setDaemon(true);
         thread.start();
-    }
-
-
-
-
-
-
-    @FXML
-    void addOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnAdd, "windowAdd.fxml");
     }
 
     @FXML

@@ -14,4 +14,5 @@ public class StorageIntermediate implements Storage {
     public DualHashBidiMap<String, String> getStorage() {
         return storage;
     }
+
 }

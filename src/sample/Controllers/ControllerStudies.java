@@ -2,26 +2,39 @@ package sample.Controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import sample.UtilClasses.Helper;
 
 import java.util.*;
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.*;
 
 
 public class ControllerStudies implements Runnable {
 
     private DualHashBidiMap<String,String> storage;
     private static int storageSize = 0;
-    private SynchronousQueue<String> synchronousQueue = new SynchronousQueue<>();
+    private double forProgressInd;          //one step of the progress indicator
+    private SynchronousQueue<String> synchronousQueue;
 
     public void setStorage(DualHashBidiMap<String, String> storage) {
         this.storage = storage;
         storageSize = storage.size();
+        synchronousQueue = new SynchronousQueue<>();
+        forProgressInd = storage.size()/100.0;
+        Thread thread = new Thread(()-> label.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (storageSize > 0) {
+                Platform.runLater(() -> {
+                    double doub = progressInd.getProgress() + forProgressInd;
+                    progressInd.setProgress(doub);
+                });
+            }
+        }));
+        thread.setDaemon(true);
+        thread.start();
     }
+
 
     @FXML
     private Label label;
@@ -35,9 +48,12 @@ public class ControllerStudies implements Runnable {
     @FXML
     private Label labelHi;
 
+    @FXML
+    private ProgressIndicator progressInd;
 
 
-    private synchronized List<String> shuffleStorage(){
+
+    private List<String> shuffleStorage(){
         List<String> resList = new ArrayList<>(100);
         resList.addAll(storage.keySet());
         Collections.shuffle(resList);
@@ -46,10 +62,10 @@ public class ControllerStudies implements Runnable {
 
     @Override
     public void run() {
-        if (storageSize != 0) {
+        if (storageSize > 0) {
             List<String> keysList = shuffleStorage();
-            for (String key : keysList) {
-                checkWord(key);
+            for (int i = 0, j = storageSize; i < j; i++) {
+                checkWord(keysList.get(i));
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -65,8 +81,8 @@ public class ControllerStudies implements Runnable {
             }
             Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
         }
-
     }
+
 
     private void checkWord(String key) {
         String value = storage.get(key);        //it is word which you have to input (translate your key)
@@ -94,7 +110,6 @@ public class ControllerStudies implements Runnable {
                         break;
                     }
                 }
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -105,6 +120,7 @@ public class ControllerStudies implements Runnable {
             Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
         }
     }
+
 
     private void circle(String value) throws InterruptedException {
         Platform.runLater(()-> {
@@ -122,7 +138,6 @@ public class ControllerStudies implements Runnable {
             labelHi.setText("");
         });
     }
-
 
     private boolean checkMistake(String s,String taken){
         if (!s.equalsIgnoreCase(taken)){
@@ -143,8 +158,6 @@ public class ControllerStudies implements Runnable {
     }
 
 
-    // that isn't all. Because you need to implement input characters: " " and "-".
-    // They will need in the "irregular verbs" and in several difficult words.
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
         if (storageSize > 0) {
@@ -155,5 +168,4 @@ public class ControllerStudies implements Runnable {
             }
         }
     }
-
 }

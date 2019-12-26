@@ -2,15 +2,10 @@
 
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="sample.Controllers.ControllerMain">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerMain">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -36,11 +31,6 @@
                </font>
             </Button>
             <Button fx:id="btnInter" layoutX="360.0" layoutY="140.0" mnemonicParsing="false" onAction="#interOnAction" prefHeight="50.0" prefWidth="200.0" text="Intermediate" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="140.0">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnAdd" layoutX="200.0" layoutY="233.0" mnemonicParsing="false" onAction="#addOnAction" prefHeight="50.0" prefWidth="200.0" text="Add new word" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="250.0">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
