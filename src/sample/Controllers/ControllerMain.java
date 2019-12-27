@@ -21,14 +21,13 @@ public class ControllerMain {
     @FXML
     private Button btnIrreg;
 
-    @FXML
-    private Button btnExit;
+
+    private String nameFXML = "windowStudies.fxml";
 
 
 
     @FXML
     void elemOnAction(ActionEvent event) {
-        String nameFXML = "windowStudies.fxml";
         ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnElem, nameFXML);
         Storage storageElementary = new StorageElementary();
         controllerStudies.setStorage(storageElementary.getStorage());
@@ -40,7 +39,6 @@ public class ControllerMain {
 
     @FXML
     void preInterOnAction(ActionEvent event) {
-        String nameFXML = "windowStudies.fxml";
         ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnPreInter, nameFXML);
         Storage storagePreIntermediate = new StoragePreIntermediate();
         controllerStudies.setStorage(storagePreIntermediate.getStorage());
@@ -51,7 +49,6 @@ public class ControllerMain {
 
     @FXML
     void irregOnAction(ActionEvent event) {
-        String nameFXML = "windowStudies.fxml";
         ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnIrreg, nameFXML);
         Storage storageIrregularVerbs = new StorageIrregularVerbs();
         controllerStudies.setStorage(storageIrregularVerbs.getStorage());
@@ -62,7 +59,6 @@ public class ControllerMain {
 
     @FXML
     void interOnAction(ActionEvent event) {
-        String nameFXML = "windowStudies.fxml";
         ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnInter, nameFXML);
         Storage storageIntermediate = new StorageIntermediate();
         controllerStudies.setStorage(storageIntermediate.getStorage());

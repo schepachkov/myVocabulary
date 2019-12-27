@@ -24,6 +24,8 @@ public class Helper {
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.setScene(new Scene(root));
+        if (nameWindowTo.contains("Studies")) stage.setTitle("Run!");
+        else stage.setTitle("Choose a section");
         stage.show();
         return loader.getController();
     }
@@ -36,4 +38,13 @@ public class Helper {
         }
         return null;
     }
+
+    public static void sleep(int millias){
+        try {
+            Thread.sleep(millias);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

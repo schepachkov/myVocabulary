@@ -69,36 +69,25 @@ public class ControllerStudies implements Runnable {
             List<String> keysList = shuffleStorage();
             for (int i = 0, j = storageSize; i < j; i++) {
                 checkWord(keysList.get(i));
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Helper.sleep(200);
             }
 
             while (!repeatQueue.isEmpty()){
                 checkWord(repeatQueue.peek());
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Helper.sleep(200);
                 repeatQueue.remove();
             }
-
-            if (storageSize <= 0){
-                Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
-            }
-
+            Platform.runLater(()->label.setText(" " + label.getText() + " "));      //only for change listener progress indicator. It will be refreshed to "done"
+            Helper.sleep(1500);
         }else{
-            Platform.runLater(()-> label.setText("There is nothing in this section"));
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
+            Platform.runLater(()-> {
+                txtFieldForWritten.setDisable(true);
+                label.setText("this section hasn't words");
+
+            });
+            Helper.sleep(3000);
         }
+        Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
     }
 
 
