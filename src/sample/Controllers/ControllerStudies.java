@@ -17,14 +17,17 @@ public class ControllerStudies implements Runnable {
     private static int storageSize = 0;
     private double forProgressInd;          //one step of the progress indicator
     private SynchronousQueue<String> synchronousQueue;
+    private Queue<String> repeatQueue;       //in this queue all words in which mistaken
 
     public void setStorage(DualHashBidiMap<String, String> storage) {
         this.storage = storage;
         storageSize = storage.size();
         synchronousQueue = new SynchronousQueue<>();
-        forProgressInd = storage.size()/100.0;
+        repeatQueue = new LinkedList<>();
+        forProgressInd = 1.0 / storage.size();
         Thread thread = new Thread(()-> label.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (storageSize > 0) {
+            if (oldValue.isEmpty()) progressInd.setProgress(0);
+            else {
                 Platform.runLater(() -> {
                     double doub = progressInd.getProgress() + forProgressInd;
                     progressInd.setProgress(doub);
@@ -72,6 +75,21 @@ public class ControllerStudies implements Runnable {
                     e.printStackTrace();
                 }
             }
+
+            while (!repeatQueue.isEmpty()){
+                checkWord(repeatQueue.peek());
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                repeatQueue.remove();
+            }
+
+            if (storageSize <= 0){
+                Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
+            }
+
         }else{
             Platform.runLater(()-> label.setText("There is nothing in this section"));
             try {
@@ -116,9 +134,6 @@ public class ControllerStudies implements Runnable {
         }
         storageSize--;
         Platform.runLater(()-> txtFieldForWritten.clear());
-        if (storageSize == 0){
-            Platform.runLater(()-> Helper.closePreviewAndShowNextWindow(txtFieldForWritten,"windowMain.fxml"));
-        }
     }
 
 
@@ -128,6 +143,7 @@ public class ControllerStudies implements Runnable {
             labelHi.setText("Hint:");
             labelForHint.setText(value);
         });
+        repeatQueue.add(storage.getKey(value));
         for (String s:value.split("")) {
             while (true) {
                 if (!checkMistake(s,synchronousQueue.take())) break;
@@ -160,7 +176,7 @@ public class ControllerStudies implements Runnable {
 
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
-        if (storageSize > 0) {
+        if (storageSize > 0 || !repeatQueue.isEmpty()) {
             if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
                 synchronousQueue.put(keyEvent.getText().toLowerCase());
             } else {
