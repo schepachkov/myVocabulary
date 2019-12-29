@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -11,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label fx:id="label" alignment="CENTER" layoutX="286.0" layoutY="131.0" prefHeight="21.0" prefWidth="300.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="130.0">
+      <Label fx:id="label" alignment="CENTER" layoutX="60.0" layoutY="128.0" prefHeight="21.0" prefWidth="480.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="128.0">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
@@ -21,7 +22,7 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelForHint" layoutX="249.0" layoutY="330.0" prefHeight="21.0" prefWidth="201.0">
+      <Label fx:id="labelForHint" layoutX="223.0" layoutY="330.0" prefHeight="21.0" prefWidth="280.0">
          <font>
             <Font name="Arial" size="18.0" />
          </font>

@@ -63,7 +63,7 @@ public class StorageIrregularVerbs implements Storage {
         storage.put("позволять","let let let");
         storage.put("делать","make made made");
 
-        storage.put("вставть, подниматься","rise rose risen");
+        storage.put("вставать, подниматься","rise rose risen");
         storage.put("сказать","say said said");
         storage.put("видеть","see saw seen");
         storage.put("продавать","sell sold sold");
@@ -139,7 +139,7 @@ public class StorageIrregularVerbs implements Storage {
         storage.put("расщеплять","split split split");
         storage.put("портить","spoil spoilt spoilt");
         storage.put("рвать","tear tore torn");
-        storage.put("прикалывть, приклеивать","stick stuck stuck");
+        storage.put("прикалывать, приклеивать","stick stuck stuck");
 
         storage.put("терпеть, выполнять что-либо","abide abode abode");
         storage.put("затерять, заложить","mislay mislaid mislaid");
