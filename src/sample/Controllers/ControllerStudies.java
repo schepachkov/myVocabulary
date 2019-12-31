@@ -7,6 +7,9 @@ import javafx.scene.input.KeyEvent;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import sample.UtilClasses.Helper;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -18,6 +21,8 @@ public class ControllerStudies implements Runnable {
     private double forProgressInd;          //one step of the progress indicator
     private SynchronousQueue<String> synchronousQueue;
     private Queue<String> repeatQueue;       //in this queue all words in which mistaken
+    private Clip clip;
+    private volatile Thread forClipThread;
 
     public void setStorage(DualHashBidiMap<String, String> storage) {
         this.storage = storage;
@@ -25,6 +30,7 @@ public class ControllerStudies implements Runnable {
         synchronousQueue = new SynchronousQueue<>();
         repeatQueue = new LinkedList<>();
         forProgressInd = 1.0 / storage.size();
+        // add changeListener. Update progress when label had changed
         Thread thread = new Thread(()-> label.textProperty().addListener((observable, oldValue, newValue) -> {
             if (oldValue.isEmpty()) progressInd.setProgress(0);
             else {
@@ -36,6 +42,14 @@ public class ControllerStudies implements Runnable {
         }));
         thread.setDaemon(true);
         thread.start();
+        // prepare to play sound
+        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath(); //absolute path of myVocabulary dir
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path + "/sample/audio/notif.wav"))){
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -96,7 +110,7 @@ public class ControllerStudies implements Runnable {
         String[] strings = value.split("");
         Platform.runLater(()-> label.setText(key));
         int countMistake = 0;
-        for (String s: strings) {
+        for (String s : strings) {
             boolean isMistake;      //have a mistake - true; don't have - false
             try {
                 String taken = synchronousQueue.take();
@@ -109,9 +123,9 @@ public class ControllerStudies implements Runnable {
                         break;
                     }
                     taken = synchronousQueue.take();
-                    isMistake = checkMistake(s,taken);
+                    isMistake = checkMistake(s, taken);
                     //if you get another
-                    if (isMistake){
+                    if (isMistake) {
                         countMistake++;
                         circle(value);
                         break;
@@ -144,8 +158,9 @@ public class ControllerStudies implements Runnable {
         });
     }
 
-    private boolean checkMistake(String s,String taken){
+    private boolean checkMistake(String s, String taken){
         if (!s.equalsIgnoreCase(taken)){
+            playMusic();
             deleteLast();
             return true;
         }
@@ -162,6 +177,13 @@ public class ControllerStudies implements Runnable {
         });
     }
 
+    private void playMusic(){
+        forClipThread = new Thread(()-> {
+            clip.setFramePosition(0);
+            clip.start();
+        });
+        forClipThread.start();
+    }
 
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {

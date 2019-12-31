@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerStudies">
-   <children>
-      <TextField fx:id="txtFieldForWritten" layoutX="226.0" layoutY="247.0" onKeyPressed="#handleKeyPressed" AnchorPane.bottomAnchor="175.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="250.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label fx:id="label" alignment="CENTER" layoutX="60.0" layoutY="128.0" prefHeight="21.0" prefWidth="480.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="128.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelHi" layoutX="150.0" layoutY="330.0" prefHeight="21.0" prefWidth="60.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelForHint" layoutX="223.0" layoutY="330.0" prefHeight="21.0" prefWidth="280.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Label>
-      <ProgressIndicator fx:id="progressInd" layoutX="550.0" layoutY="10.0" progress="0.0" />
-   </children>
+   <TextField fx:id="txtFieldForWritten" layoutX="226.0" layoutY="247.0" onKeyPressed="#handleKeyPressed" AnchorPane.bottomAnchor="175.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="250.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </TextField>
+   <Label fx:id="label" alignment="CENTER" layoutX="60.0" layoutY="128.0" prefHeight="21.0" prefWidth="480.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="128.0">
+      <font>
+         <Font name="Arial" size="18.0" />
+      </font>
+   </Label>
+   <Label fx:id="labelHi" layoutX="150.0" layoutY="330.0" prefHeight="21.0" prefWidth="60.0">
+      <font>
+         <Font name="Arial" size="18.0" />
+      </font>
+   </Label>
+   <Label fx:id="labelForHint" layoutX="223.0" layoutY="330.0" prefHeight="21.0" prefWidth="280.0">
+      <font>
+         <Font name="Arial" size="18.0" />
+      </font>
+   </Label>
+   <ProgressIndicator fx:id="progressInd" layoutX="550.0" layoutY="10.0" progress="0.0" />
 </AnchorPane>

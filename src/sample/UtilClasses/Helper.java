@@ -1,6 +1,5 @@
 package sample.UtilClasses;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -39,7 +38,7 @@ public class Helper {
         return null;
     }
 
-    public static void sleep(int millias){
+    public static void sleep(long millias){
         try {
             Thread.sleep(millias);
         } catch (InterruptedException e) {

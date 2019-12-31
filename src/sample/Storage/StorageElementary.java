@@ -99,7 +99,7 @@ public class StorageElementary implements Storage {
         storage.put("прибывать","arrive");
         storage.put("обращайтесь в любое время","any time");
         storage.put("не за что","do not metion it");
-        storage.put("спасибо","thak you");
+        storage.put("спасибо","thank you");
         storage.put("осторожно","look out");
         storage.put("регистрироваться","check in");
         storage.put("отметить в списке","check off");
