@@ -265,6 +265,263 @@ public class StorageElementary implements Storage {
         storage.put("соревнования","competition");
         storage.put("практика","practice");
 
+        //========================================================
+
+        storage.put("тетрадь, блокнот","notebook");
+        storage.put("порядок, приказ","order");
+        storage.put("счет","bill");
+        storage.put("степень, ступень, класс (в школе)","grade");
+        storage.put("наличные деньги, касса","cash");
+        storage.put("скидка","discount");
+        storage.put("чек, квитанция, рецепт","receipt");
+        storage.put("бумажник","wallet");
+        storage.put("кошелек","purse");
+        storage.put("сейф, безопасный","safe");
+        storage.put("насекомое","insect");
+        storage.put("крыса","rat");
+        storage.put("ежедневный","daily");
+        storage.put("на ежедневной основе","on a daily basis");
+
+
+        storage.put("сегодня вечером","tonight");
+        storage.put("полдень","noon");
+        storage.put("покупатель, заказчик","customer");
+        storage.put("подходить, соответствовать","match");
+        storage.put("толпа","crowd");
+        storage.put("упаковка, упаковывать","pack");
+        storage.put("оживленный, занятой","busy");
+        storage.put("шерсть","wool");
+        storage.put("серебро","silver");
+        storage.put("кожа","leather");
+        storage.put("двойной","double");
+        storage.put("дважды","twice");
+        storage.put("делить","share");
+        storage.put("несколько","several");
+        storage.put("четверть","quarter");
+        storage.put("степень","degree");
+        storage.put("правильный, правый","right");
+
+        storage.put("правда, настоящий","true");
+        storage.put("неправильный","wrong");
+        storage.put("молиться","pray");
+        storage.put("церковь","church");
+        storage.put("путь, дорога","way");
+        storage.put("чудесный","wonderful");
+        storage.put("загадка","puzzle");
+        storage.put("дар, подарок","gift");
+        storage.put("замок","castle");
+        storage.put("мягкий, программный","soft");
+        storage.put("получать (не get)","receive");
+        storage.put("заметка, примечание","note");
+        storage.put("искусство","art");
+        storage.put("альбом","album");
+        storage.put("встреча (not appointment)","meeting");
+
+        storage.put("домашний, происходяший в помещении","indoor");
+        storage.put("краска, красить","paint");
+        storage.put("деятельность, активность","activity");
+        storage.put("фотография","photograph");
+        storage.put("отдыхать","rest");
+        storage.put("предпочтение","prefer");
+        storage.put("кататься на коньках","skate");
+        storage.put("чинить","repair");
+        storage.put("марка (вроде как почтовая)","stamp");
+        storage.put("опасность","danger");
+        storage.put("район","area");
+        storage.put("авария, несчастный случай","accident");
+        storage.put("приключение","adventure");
+        storage.put("карабкаться, забираться","climb");
+        storage.put("последний, нижний","bottom");
+        storage.put("доступный","available");
+        storage.put("пустыня","desert");
+
+
+        storage.put("громкий","loud");
+        storage.put("жара","heat");
+        storage.put("пустой","empty");
+        storage.put("сухой","dry");
+        storage.put("двигатель, машина","engine");
+        storage.put("спешка","hurry");
+        storage.put("кричать","shout");
+        storage.put("возвращаться","return");
+        storage.put("пространство, место, космос","space");
+        storage.put("пункт, место, точка","point");
+        storage.put("место, сидение","seat");
+        storage.put("настоящий, реальный","real");
+        storage.put("особенный, специальный","special");
+        storage.put("беспокоиться (син. bother) ","worry");
+        storage.put("разнообразный","various");
+        storage.put("дикий","wild");
+
+
+        storage.put("колесо","wheel");
+        storage.put("испытвающий жажду","thirsty");
+        storage.put("странный","strange");
+        storage.put("обод колеса","tive");
+        storage.put("воздушный шар","balloon");
+        storage.put("рождение","birth");
+        storage.put("встреча, прием (син. meeting)","appointment");
+        storage.put("радостный, довольный","glad");
+        storage.put("внутри","inside");
+        storage.put("особенно","especially");
+        storage.put("полный, наполненный","full");
+        storage.put("поздравления","congratulation");
+        storage.put("взрослый","adult");
+        storage.put("приглашение","invitation");
+        storage.put("арендовать","rent");
+        storage.put("пропускать, скучать","miss");
+        storage.put("этап, сцена","stage");
+        storage.put("предлагать","offer");
+        storage.put("снаружи","outside");
+
+
+        storage.put("современный","modern");
+        storage.put("иностранный","foreign");
+        storage.put("честный, справедливый","fair");
+        storage.put("круглый","round");
+        storage.put("большой (не big)","large");
+        storage.put("левый","left");
+        storage.put("уверенный","sure");
+        storage.put("чистый, ясный","clean");
+        storage.put("международный","international");
+        storage.put("фиолетовый, пурпурный","purple");
+        storage.put("светлый","blond");
+        storage.put("тонкий, худой","thin");
+        storage.put("широкий","wide");
+        storage.put("круг","circle");
+        storage.put("лицензия","license");
+        storage.put("канал, русло","channel");
+        storage.put("многоквартирный дом, кубик","block");
+        storage.put("связь, контакт","contact");
+        storage.put("парень, чучело","guy");
+        storage.put("цель (син. aim, target)","goal");
+
+
+        storage.put("платформа, площадка","platform");
+        storage.put("сущность, дело(син. case), вопрос (син. question)","matter");
+        storage.put("сторона","side");
+        storage.put("кусок","piece");
+        storage.put("жалость, сожаление","pity");
+        storage.put("стыд, позор, досада","shame");
+        storage.put("лужа, бассейн","pool");
+        storage.put("строчка, очередь, линия","line");
+        storage.put("причина","reason");
+        storage.put("обсуждать","discuss");
+        storage.put("откладывать, задерживать","delay");
+        storage.put("произносить по буквам","spell");
+        storage.put("пинать","kick");
+        storage.put("толкать","push");
+        storage.put("замечать","notice");
+        storage.put("касаться, затрагивать","concern");
+        storage.put("наполнять","fill");
+        storage.put("терпеть неудачу, подводить","fail");
+        storage.put("надоедать, беспокоить (син. worry)","bother");
+
+        storage.put("пищевой","alimentary");
+        storage.put("целеустремленный","ambitious");
+        storage.put("янатрь","amber");
+        storage.put("совокупность","aggregate");
+        storage.put("дуга, изгиб","arc");
+        storage.put("действительный, фактичный","actual");
+        storage.put("согласие, единодушие","accord");
+        storage.put("боеприпасы","ammunition");
+        storage.put("возбуждать, волновать","agitate");
+        storage.put("точный","accurate");
+        storage.put("ведро","bucket");
+        storage.put("шкафчик","cabinet");
+        storage.put("пуговица, кнопка","button");
+        storage.put("жезл, дубина, дирежорская палочка","baton");
+        storage.put("слиток","bullion");
+        storage.put("маяк","beacon");
+        storage.put("претендент","aspirant");
+        storage.put("музыкальная группа","band");
+        storage.put("озорник","brat");
+        storage.put("преобразовывать","convert");
+
+        storage.put("глина","clay");
+        storage.put("гребень","crest");
+        storage.put("труп","corpse");
+        storage.put("мультфильм","cartoon");
+        storage.put("ворчать, жаловаться, раздрожать","crab");
+        storage.put("цвет лица","complexion");
+        storage.put("бетон","concrete");
+        storage.put("скоропись","cursive");
+        storage.put("наборщик","compositor");
+        storage.put("орден","decoration");
+        storage.put("добродушный, добрый, сердечный, радушный","genial");
+        storage.put("храбрость","gallantry");
+        storage.put("ткань","fabric");
+        storage.put("честь","honor");
+        storage.put("стихийный","elemental");
+        storage.put("знакомый","familar");
+        storage.put("изящный","delicate");
+        storage.put("дробь","fraction");
+
+
+        storage.put("печень","liver");
+        storage.put("размножение","multiplication");
+        storage.put("сумасшедший","lunatic");
+        storage.put("оскорбление","insult");
+        storage.put("болото","marsh");
+        storage.put("мэр города","mayor");
+        storage.put("ум","intelligence");
+        storage.put("превращать в жидкость","liquidze");
+        storage.put("боевой дух","morale");
+        storage.put("журнал","magazine");
+        storage.put("атлас","satin");
+        storage.put("терпеливый","patient");
+        storage.put("многоугольник","polygon");
+        storage.put("смола","resin");
+        storage.put("перспектива","prospect");
+        storage.put("повторение","repetition");
+        storage.put("основной (син. main)","principal");
+        storage.put("добрые отношения","rapport");
+        storage.put("ладонь","palm");
+
+
+        storage.put("врач-терапевт","physician");
+        storage.put("курение","smoking");
+        storage.put("отряд","troop");
+        storage.put("лакей","valet");
+        storage.put("коготь","talon");
+        storage.put("телега","wagon");
+        storage.put("бархат","velvet");
+        storage.put("размышление","speculation");
+        storage.put("очки","spectacles");
+        storage.put("табурет","stool");
+        storage.put("учтивый","urbane");
+        storage.put("натрий","sodium");
+
+        storage.put("Полдник","afternoon snack");
+        storage.put("Спрашивать","ask");
+        storage.put("Ответ","answer");
+        storage.put("Ответить","reply");
+        storage.put("Хотя, несмотря на","although");
+        storage.put("Однако, несмотря на","though");
+        storage.put("Сердце","heart");
+        storage.put("Здоровье","health");
+        storage.put("Богатство","wealth");
+        storage.put("Полый","hollow");
+        storage.put("Ужасный","Horrible");
+        storage.put("Отваратительный","disgusting");
+
+        storage.put("Преимущество","advantage");
+        storage.put("Реклама","adversting");
+        storage.put("Дополнение","addition");
+        storage.put("Трудный","difficult");
+        storage.put("Робкий","diffident");
+        storage.put("Отличительный","distinctive");
+        storage.put("Однако","but");
+        storage.put("Тем не менее","nevertheless");
+        storage.put("Позади","behind");
+        storage.put("Кроме того","besides");
+        storage.put("Ответственный","responsible");
+        storage.put("Обязанность","responsibility");
+        storage.put("Отзывчивай","responsive");
+        storage.put("Ответственно","responsibly");
+
+        //storage size is 473 elements
+
     }
 
     @Override

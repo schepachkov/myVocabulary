@@ -19,7 +19,6 @@ public class Helper {
         } catch (IOException e){
             e.printStackTrace();
         }
-        //Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.setScene(new Scene(root));

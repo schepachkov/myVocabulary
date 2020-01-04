@@ -43,7 +43,11 @@ public class ControllerStudies implements Runnable {
         thread.setDaemon(true);
         thread.start();
         // prepare to play sound
-        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath(); //absolute path of myVocabulary dir
+        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        if (path.contains("artifacts")){
+            path = path.substring(0,path.indexOf("artifacts"));
+            path += "/production/myVocabulary/";
+        }
         try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path + "/sample/audio/notif.wav"))){
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
@@ -168,7 +172,7 @@ public class ControllerStudies implements Runnable {
     }
 
     private void deleteLast (){
-        Platform.runLater(()->{ //изменение поля при ошибке : не дает пропечатать неправильный символ
+        Platform.runLater(()->{
             String txt = txtFieldForWritten.getText();
             if (txt.length() > 0) {
                 txtFieldForWritten.setText(txt.substring(0, txt.length() - 1));
