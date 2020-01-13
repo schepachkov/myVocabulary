@@ -35,6 +35,88 @@ public class StoragePreIntermediate implements Storage {
         storage.put("развод", "divorce");
         storage.put("церемония, обряд", "ceremony");
 
+        //VOCATIONS AND ATTRACTIONS
+        storage.put("досуг, свободное время","leisure");
+        storage.put("водопад","waterfall");
+        storage.put("сельская местность","countryside");
+        storage.put("лагерь","camp");
+        storage.put("песок","sand");
+        storage.put("побережье","coast");
+        storage.put("пейзаж","scenery");
+        storage.put("путешествовать автотранспортом","hitchhike");
+        storage.put("берег","shore");
+        storage.put("ландшафт, пейзаж","landscape");
+        storage.put("экспедиция","expedition");
+        storage.put("курорт","resort");
+
+        //ART AND ENTERTAINMENT
+
+        storage.put("комедия","comedy");
+        storage.put("агенство","agency");
+        storage.put("выставка","exhibition");
+        storage.put("фольклор, народный","folk");
+        storage.put("зритель, публика","audience");
+        storage.put("праздник, фестиваль","festival");
+        storage.put("художественная литература","fiction");
+        storage.put("мультфильм, кино","animation");
+        storage.put("документальный фильм","documentary");
+        storage.put("цирк","circus");
+
+        //ART AND ENTERTAINMENT 1
+        storage.put("студия","studio");
+        storage.put("боевик, триллер","thriller");
+        storage.put("скульптура","sculpture");
+        storage.put("интерес","interest");
+        storage.put("литература","literature");
+        storage.put("эффектное зрелище","spectacular");
+        storage.put("удовольствие","pleasure");
+        storage.put("поэзия","poetry");
+        storage.put("мыльная опера, сериал","soap opera");
+        storage.put("оркестр","orchestra");
+
+        //GRAMMAR
+        storage.put("артикль, статья","article");
+        storage.put("наклонение; настроение","mood");
+        storage.put("произношение","pronunciation");
+        storage.put("запятая","comma");
+        storage.put("местоимение","pronoun");
+        storage.put("время; натянутый","tense");
+        storage.put("простой","simple");
+        storage.put("пунктуация","punctuation");
+        storage.put("речь","speech");
+        storage.put("ударение; напряжение","stress");
+        storage.put("страдательный, пассивный","passive");
+        storage.put("предлог","preposition");
+        storage.put("прямой","direct");
+
+        //TEXT AND BOOKS
+
+        storage.put("персонаж, характер","character");
+        storage.put("заключение","conclusion");
+        storage.put("деталь","detail");
+        storage.put("исправление","correction");
+        storage.put("объяснение","explanation");
+        storage.put("описание","description");
+        storage.put("глава (в книге)","chapter");
+        storage.put("брошюра","brochure");
+        storage.put("загаловок","title");
+        storage.put("сочинение, произведение","composition");
+
+        //TEXT AND BOOKS 1
+        storage.put("тема","topic");
+        storage.put("основной","main");
+        storage.put("роман","novel");
+        storage.put("выпуск, издание","issue");
+        storage.put("перевод","translation");
+        storage.put("упоминание, ссылка","mention");
+        storage.put("интервью, беседа","interview");
+        storage.put("блок","unit");
+        storage.put("публиковать","publish");
+        storage.put("сцена, эпизод","scene");
+        storage.put("фраза","phrase");
+        storage.put("обзор, рецензия","review");
+        storage.put("том, книга","volume");
+
 
     }
     @Override

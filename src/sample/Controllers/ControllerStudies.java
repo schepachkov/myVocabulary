@@ -191,11 +191,18 @@ public class ControllerStudies implements Runnable {
 
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
-        if (storageSize > 0 || !repeatQueue.isEmpty()) {
-            if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
-                synchronousQueue.put(keyEvent.getText().toLowerCase());
-            } else {
-                deleteLast();
+        //imitation of turning off back_sapce
+        if (keyEvent.getCode().toString().equals("BACK_SPACE")){
+            String txt = txtFieldForWritten.getText();
+            txtFieldForWritten.setText(txt + " ");
+            txtFieldForWritten.positionCaret(txt.length() + 1);
+        }
+
+        if (!(keyEvent.getCode().toString().equals("TAB") || keyEvent.getCode().toString().equals("ENTER"))) {
+            if (storageSize > 0 || !repeatQueue.isEmpty()) {
+                if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
+                    synchronousQueue.put(keyEvent.getText().toLowerCase());
+                } else if (!keyEvent.getText().isEmpty()) deleteLast();
             }
         }
     }

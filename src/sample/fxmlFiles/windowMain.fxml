@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerMain">
-   <children>
       <Button fx:id="btnElem" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#elemOnAction" prefHeight="50.0" prefWidth="200.0" text="Elementary" AnchorPane.leftAnchor="40.0">
          <font>
             <Font name="Arial" size="18.0" />
@@ -26,10 +25,14 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnExit" layoutX="332.0" layoutY="358.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="50.0" prefWidth="200.0" text="Exit">
+      <Button fx:id="btnExit" layoutX="386.0" layoutY="373.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="50.0" prefWidth="200.0" text="Exit">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Button>
-   </children>
+      <Button fx:id="btnShow" layoutX="200.0" layoutY="225.0" mnemonicParsing="false" onAction="#showDataOnAction" prefHeight="50.0" prefWidth="200.0" text="Show words">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Button>
 </AnchorPane>
