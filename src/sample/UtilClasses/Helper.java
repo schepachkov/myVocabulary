@@ -23,7 +23,8 @@ public class Helper {
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         if (nameWindowTo.contains("Studies")) stage.setTitle("Run!");
-        else stage.setTitle("Choose a section");
+        else if (nameWindowTo.contains("Main")) stage.setTitle("Choose a section");
+            else if (nameWindowTo.contains("Show")) stage.setTitle("Read");
         stage.show();
         return loader.getController();
     }

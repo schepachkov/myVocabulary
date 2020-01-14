@@ -1,7 +1,9 @@
 package sample.Controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -42,6 +44,8 @@ public class ControllerShowData{
     @FXML
     private ToggleGroup group1;
 
+    @FXML
+    private Label lblCount;
 
     private Storage storage;
 
@@ -62,15 +66,16 @@ public class ControllerShowData{
 
             updateTable();
         })).start();
-
     }
 
     private void updateTable() {
+        Platform.runLater(()-> lblCount.setText(storage.getStorage().size() + ""));
         ObservableList<Data> observableList = FXCollections.observableArrayList();
         DualHashBidiMap<String, String> dualHashBidiMap = storage.getStorage();
         for (String key:dualHashBidiMap.keySet()) {
             observableList.add(new Data(key,dualHashBidiMap.get(key)));
         }
+        observableList.sort((o1, o2) -> o1.getValue().compareToIgnoreCase(o2.getValue()));
         tableView.setItems(observableList);
     }
 
