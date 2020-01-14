@@ -69,6 +69,7 @@ public class ControllerShowData{
     }
 
     private void updateTable() {
+        tableView.scrollTo(0);
         Platform.runLater(()-> lblCount.setText(storage.getStorage().size() + ""));
         ObservableList<Data> observableList = FXCollections.observableArrayList();
         DualHashBidiMap<String, String> dualHashBidiMap = storage.getStorage();

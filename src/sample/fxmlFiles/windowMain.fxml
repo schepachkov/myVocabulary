@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerMain">
-      <Button fx:id="btnElem" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#elemOnAction" prefHeight="50.0" prefWidth="200.0" text="Elementary" AnchorPane.leftAnchor="40.0">
+   <children>
+         <Button fx:id="btnElem" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#elemOnAction" prefHeight="50.0" prefWidth="200.0" text="Elementary" AnchorPane.leftAnchor="40.0">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnPreInter" layoutX="332.0" layoutY="40.0" mnemonicParsing="false" onAction="#preInterOnAction" prefHeight="50.0" prefWidth="200.0" text="Pre - intermediate" AnchorPane.rightAnchor="40.0">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnIrreg" layoutX="40.0" layoutY="139.0" mnemonicParsing="false" onAction="#irregOnAction" prefHeight="50.0" prefWidth="200.0" text="Irregular verbs" AnchorPane.leftAnchor="40.0">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnInter" layoutX="332.0" layoutY="139.0" mnemonicParsing="false" onAction="#interOnAction" prefHeight="50.0" prefWidth="200.0" text="Intermediate" AnchorPane.rightAnchor="40.0">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnExit" layoutX="386.0" layoutY="373.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="50.0" prefWidth="200.0" text="Exit">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnShow" layoutX="200.0" layoutY="225.0" mnemonicParsing="false" onAction="#showDataOnAction" prefHeight="50.0" prefWidth="200.0" text="Show words">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Button>
+      <Label layoutX="533.0" layoutY="5.0" text="Pupyrka design">
          <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnPreInter" layoutX="332.0" layoutY="40.0" mnemonicParsing="false" onAction="#preInterOnAction" prefHeight="50.0" prefWidth="200.0" text="Pre - intermediate" AnchorPane.rightAnchor="40.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnIrreg" layoutX="40.0" layoutY="139.0" mnemonicParsing="false" onAction="#irregOnAction" prefHeight="50.0" prefWidth="200.0" text="Irregular verbs" AnchorPane.leftAnchor="40.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnInter" layoutX="332.0" layoutY="139.0" mnemonicParsing="false" onAction="#interOnAction" prefHeight="50.0" prefWidth="200.0" text="Intermediate" AnchorPane.rightAnchor="40.0">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnExit" layoutX="386.0" layoutY="373.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="50.0" prefWidth="200.0" text="Exit">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnShow" layoutX="200.0" layoutY="225.0" mnemonicParsing="false" onAction="#showDataOnAction" prefHeight="50.0" prefWidth="200.0" text="Show words">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
+            <Font name="Arial" size="10.0" />
+         </font></Label>
+   </children>
 </AnchorPane>
