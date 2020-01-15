@@ -10,6 +10,7 @@ import sample.UtilClasses.Helper;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -44,11 +45,20 @@ public class ControllerStudies implements Runnable {
         thread.start();
         // prepare to play sound
         String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        boolean flag = false;
+        Path dir = null;
         if (path.contains("artifacts")){
             path = path.substring(0,path.indexOf("artifacts"));
-            path += "/production/myVocabulary/";
+            path += "\\production\\myVocabulary\\";
+        } else if (!path.contains("production")) {
+            File file = new File(path);
+            dir = file.toPath().getParent();
+            flag = true;
         }
-        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path + "/sample/audio/notif.wav"))){
+        String resPath = "";
+        if (flag) resPath = dir + "\\notif.wav";
+        else resPath = path + "\\sample\\audio\\notif.wav";
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(resPath))){
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
