@@ -97,7 +97,7 @@ public class ControllerShowData{
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
                     if (!isEmpty()) {
-                        setFont(Font.font("Arial", 15));
+                        setFont(Font.font("Arial", 19));
                         setText(item);
                     }
                 }

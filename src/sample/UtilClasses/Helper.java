@@ -24,7 +24,12 @@ public class Helper {
         stage.setScene(new Scene(root));
         if (nameWindowTo.contains("Studies")) stage.setTitle("Run!");
         else if (nameWindowTo.contains("Main")) stage.setTitle("Choose a section");
-            else if (nameWindowTo.contains("Show")) stage.setTitle("Read");
+            else if (nameWindowTo.contains("Show")){
+                stage.setTitle("Read");
+                stage.setResizable(true);
+                stage.setMinHeight(675);
+                stage.setMinWidth(900);
+        }
         stage.show();
         return loader.getController();
     }

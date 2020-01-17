@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerMain">
-   <children>
-         <Button fx:id="btnElem" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#elemOnAction" prefHeight="50.0" prefWidth="200.0" text="Elementary" AnchorPane.leftAnchor="40.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerMain">
+         <Button fx:id="btnElem" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#elemOnAction" prefHeight="75.0" prefWidth="300.0" text="Elementary" AnchorPane.leftAnchor="40.0">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnPreInter" layoutX="332.0" layoutY="40.0" mnemonicParsing="false" onAction="#preInterOnAction" prefHeight="50.0" prefWidth="200.0" text="Pre - intermediate" AnchorPane.rightAnchor="40.0">
+         <Button fx:id="btnPreInter" layoutX="332.0" layoutY="40.0" mnemonicParsing="false" onAction="#preInterOnAction" prefHeight="75.0" prefWidth="300.0" text="Pre - intermediate" AnchorPane.rightAnchor="40.0">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnIrreg" layoutX="40.0" layoutY="139.0" mnemonicParsing="false" onAction="#irregOnAction" prefHeight="50.0" prefWidth="200.0" text="Irregular verbs" AnchorPane.leftAnchor="40.0">
+         <Button fx:id="btnIrreg" layoutX="40.0" layoutY="214.0" mnemonicParsing="false" onAction="#irregOnAction" prefHeight="75.0" prefWidth="300.0" text="Irregular verbs" AnchorPane.leftAnchor="40.0">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnInter" layoutX="332.0" layoutY="139.0" mnemonicParsing="false" onAction="#interOnAction" prefHeight="50.0" prefWidth="200.0" text="Intermediate" AnchorPane.rightAnchor="40.0">
+         <Button fx:id="btnInter" layoutX="560.0" layoutY="214.0" mnemonicParsing="false" onAction="#interOnAction" prefHeight="75.0" prefWidth="300.0" text="Intermediate" AnchorPane.rightAnchor="40.0">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnExit" layoutX="386.0" layoutY="373.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="50.0" prefWidth="200.0" text="Exit">
+         <Button fx:id="btnExit" layoutX="575.0" layoutY="577.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="75.0" prefWidth="300.0" text="Exit" AnchorPane.rightAnchor="25.0">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnShow" layoutX="200.0" layoutY="225.0" mnemonicParsing="false" onAction="#showDataOnAction" prefHeight="50.0" prefWidth="200.0" text="Show words">
+         <Button fx:id="btnShow" layoutX="300.0" layoutY="360.0" mnemonicParsing="false" onAction="#showDataOnAction" prefHeight="75.0" prefWidth="300.0" text="Show words">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Button>
-   </children>
 </AnchorPane>
