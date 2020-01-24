@@ -39,8 +39,8 @@ public class Helper {
             Stage stage = (Stage) anyCurrentNode.getScene().getWindow();
             stage.close();
             return open(nameWindowTo);
-        }
-        return null;
+        }else throw new RuntimeException("Called node is null");
+
     }
 
     public static void sleep(long millias){

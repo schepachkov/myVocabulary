@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import sample.UtilClasses.Helper;
+import sample.UtilClasses.TimeCounter;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -23,47 +24,18 @@ public class ControllerStudies implements Runnable {
     private SynchronousQueue<String> synchronousQueue;
     private Queue<String> repeatQueue;       //in this queue all words in which mistaken
     private Clip clip;
-    private volatile Thread forClipThread;
+    private Thread forClipThread;
 
+
+    //instead of contructor of ControllerStudies class
     public void setStorage(DualHashBidiMap<String, String> storage) {
         this.storage = storage;
         storageSize = storage.size();
         synchronousQueue = new SynchronousQueue<>();
         repeatQueue = new LinkedList<>();
         forProgressInd = 1.0 / storage.size();
-        // add changeListener. Update progress when label had changed
-        Thread thread = new Thread(()-> label.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (oldValue.isEmpty()) progressInd.setProgress(0);
-            else {
-                Platform.runLater(() -> {
-                    double doub = progressInd.getProgress() + forProgressInd;
-                    progressInd.setProgress(doub);
-                });
-            }
-        }));
-        thread.setDaemon(true);
-        thread.start();
-        // prepare to play sound
-        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-        boolean flag = false;
-        Path dir = null;
-        if (path.contains("artifacts")){
-            path = path.substring(0,path.indexOf("artifacts"));
-            path += "\\production\\myVocabulary\\";
-        } else if (!path.contains("production")) {
-            File file = new File(path);
-            dir = file.toPath().getParent();
-            flag = true;
-        }
-        String resPath = "";
-        if (flag) resPath = dir + "\\notif.wav";
-        else resPath = path + "\\sample\\audio\\notif.wav";
-        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(resPath))){
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
+        createAndStartProgressBar();
+        prepareToPlaySound();
     }
 
 
@@ -82,18 +54,17 @@ public class ControllerStudies implements Runnable {
     @FXML
     private ProgressIndicator progressInd;
 
+    @FXML
+    private Label labelCounter;
 
-
-    private List<String> shuffleStorage(){
-        List<String> resList = new ArrayList<>(100);
-        resList.addAll(storage.keySet());
-        Collections.shuffle(resList);
-        return resList;
+    public Label getLabelCounter() {
+        return labelCounter;
     }
 
     @Override
     public void run() {
         if (storageSize > 0) {
+            startCounter();
             List<String> keysList = shuffleStorage();
             for (int i = 0, j = storageSize; i < j; i++) {
                 checkWord(keysList.get(i));
@@ -105,7 +76,8 @@ public class ControllerStudies implements Runnable {
                 Helper.sleep(200);
                 repeatQueue.remove();
             }
-            Platform.runLater(()->label.setText(" " + label.getText() + " "));      //only for change listener progress indicator. It will be refreshed to "done"
+            Platform.runLater(()->label.setText(" " + label.getText() + " "));      //only for change listener progress indicator. It will be refreshed to "done" on the progressBar
+            TimeCounter.stopCounter();
             Helper.sleep(1500);
         }else{
             Platform.runLater(()-> {
@@ -215,5 +187,55 @@ public class ControllerStudies implements Runnable {
                 } else if (!keyEvent.getText().isEmpty()) deleteLast();
             }
         }
+    }
+
+    private void createAndStartProgressBar(){
+        // add changeListener. Update progress when label had changed
+        Thread thread = new Thread(()-> label.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (oldValue.isEmpty()) progressInd.setProgress(0);
+            else {
+                Platform.runLater(() -> {
+                    double doub = progressInd.getProgress() + forProgressInd;
+                    progressInd.setProgress(doub);
+                });
+            }
+        }));
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void prepareToPlaySound(){
+        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        boolean flag = false;
+        Path dir = null;
+        if (path.contains("artifacts")){
+            path = path.substring(0,path.indexOf("artifacts"));
+            path += "\\production\\myVocabulary\\";
+        } else if (!path.contains("production")) {
+            File file = new File(path);
+            dir = file.toPath().getParent();
+            flag = true;
+        }
+        String resPath = "";
+        if (flag) resPath = dir + "\\notif.wav";
+        else resPath = path + "\\sample\\audio\\notif.wav";
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(resPath))){
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<String> shuffleStorage(){
+        List<String> resList = new ArrayList<>(100);
+        resList.addAll(storage.keySet());
+        Collections.shuffle(resList);
+        return resList;
+    }
+
+    private void startCounter() {
+        TimeCounter timeCounter = new TimeCounter(this);
+        timeCounter.start();
     }
 }
