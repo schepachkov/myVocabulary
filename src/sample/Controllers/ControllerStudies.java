@@ -49,9 +49,6 @@ public class ControllerStudies implements Runnable {
     private Label labelForHint;
 
     @FXML
-    private Label labelHi;
-
-    @FXML
     private ProgressIndicator progressInd;
 
     @FXML
@@ -129,8 +126,7 @@ public class ControllerStudies implements Runnable {
     private void circle(String value) throws InterruptedException {
         Platform.runLater(()-> {
             txtFieldForWritten.clear();
-            labelHi.setText("Hint:");
-            labelForHint.setText(value);
+            labelForHint.setText("Hint: " + value);
         });
         repeatQueue.add(storage.getKey(value));
         for (String s:value.split("")) {
@@ -138,10 +134,7 @@ public class ControllerStudies implements Runnable {
                 if (!checkMistake(s,synchronousQueue.take())) break;
             }
         }
-        Platform.runLater(()-> {
-            labelForHint.setText("");
-            labelHi.setText("");
-        });
+        Platform.runLater(()-> labelForHint.setText(""));
     }
 
     private boolean checkMistake(String s, String taken){
