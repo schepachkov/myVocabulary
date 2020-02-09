@@ -79,7 +79,7 @@ public class StorageIrregularVerbs implements Storage {
         storage.put("светить, сиять","shine shone shone");
         storage.put("показывать","show showed shown");
         storage.put("сидеть","sit sat sat");
-        storage.put("отпарвлять, посылать","send sent sent");
+        storage.put("отправлять, посылать","send sent sent");
 
         storage.put("петь","sing sang sung");
         storage.put("стоять","stand stood stood");

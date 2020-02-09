@@ -24,6 +24,10 @@ public class ControllerMain {
     @FXML
     private Button btnShow;
 
+    @FXML
+    private Button btnHeap;
+
+
 
     private final String STUDIESFXML = "windowStudies.fxml";
     private final String SHOWFXML = "windowShow.fxml";
@@ -66,6 +70,16 @@ public class ControllerMain {
         ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnInter, STUDIESFXML);
         Storage storageIntermediate = new StorageIntermediate();
         controllerStudies.setStorage(storageIntermediate.getStorage());
+        Thread thread = new Thread(controllerStudies);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    @FXML
+    void heapOnAction (ActionEvent event){
+        ControllerStudies controllerStudies = (ControllerStudies) Helper.closePreviewAndShowNextWindow(btnHeap, STUDIESFXML);
+        Storage storageHeap = new StorageHeap();
+        controllerStudies.setStorage(storageHeap.getStorage());
         Thread thread = new Thread(controllerStudies);
         thread.setDaemon(true);
         thread.start();

@@ -14,6 +14,8 @@ import sample.Storage.*;
 import sample.UtilClasses.Data;
 import sample.UtilClasses.Helper;
 
+import java.util.Arrays;
+
 public class ControllerShowData{
 
     @FXML
@@ -41,6 +43,9 @@ public class ControllerShowData{
     private RadioButton radioElem;
 
     @FXML
+    private RadioButton radioHeap;
+
+    @FXML
     private ToggleGroup group1;
 
     @FXML
@@ -62,14 +67,18 @@ public class ControllerShowData{
             else if (radioPreInter.isSelected()) storage = new StoragePreIntermediate();
             else if (radioInter.isSelected()) storage = new StorageIntermediate();
             else if (radioIrreg.isSelected()) storage = new StorageIrregularVerbs();
+            else if (radioHeap.isSelected()) storage = new StorageHeap();
 
             updateTable();
         })).start();
     }
 
     private void updateTable() {
-        tableView.scrollTo(0);
-        Platform.runLater(()-> lblCount.setText(storage.getStorage().size() + ""));
+        Platform.runLater(()->{
+            tableView.refresh();
+            tableView.scrollTo(0);
+            lblCount.setText(storage.getStorage().size() + "");
+        });
         ObservableList<Data> observableList = FXCollections.observableArrayList();
         DualHashBidiMap<String, String> dualHashBidiMap = storage.getStorage();
         for (String key:dualHashBidiMap.keySet()) {

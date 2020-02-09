@@ -117,6 +117,52 @@ public class StoragePreIntermediate implements Storage {
         storage.put("обзор, рецензия","review");
         storage.put("том, книга","volume");
 
+        //MEDICINE
+        storage.put("болезнь (not illness)","disease");
+        storage.put("аптека","drugstore");
+        storage.put("кашель","cough");
+        storage.put("боль (син. pain)","ache");
+        storage.put("скорая помощь","ambulance");
+        storage.put("капля","drop");
+        storage.put("инвалид","disabled");
+        storage.put("критический случай","emergency");
+        storage.put("рак (\"болезнь\")","cancer");
+
+        //MEDICINE - 1
+        storage.put("шок, удар","shock");
+        storage.put("слабый","weak");
+        storage.put("болезнь (not disease)","illness");
+        storage.put("срочный, неотложный","urgent");
+        storage.put("грипп","flu");
+        storage.put("рецепт, прописанное лекарство","prescription");
+        storage.put("выздоравливать","recover");
+        storage.put("пациент, больной","patient");
+        storage.put("сердечный приступ","heart attack");
+        storage.put("жар, лихорадка","fever");
+
+        //BODY
+        storage.put("улыбка","smile");
+        storage.put("плечо","shoulder");
+        storage.put("горло","throat");
+        storage.put("язык","tongue");
+        storage.put("усы","mustache");
+        storage.put("вес","weight");
+        storage.put("губа","lip");
+        storage.put("голос","voice");
+        storage.put("висок","temple");
+
+        //BODY - 1
+        storage.put("локоть","elbow");
+        storage.put("щека","cheek");
+        storage.put("лоб","forehead");
+        storage.put("подбородок","chin");
+        storage.put("фигура, телосложение","figure");
+        storage.put("колено","knee");
+        storage.put("щиколотка, лодыжка","ankle");
+        storage.put("пятка","heel");
+        storage.put("ступня","foot");
+        storage.put("рост","height");
+
 
     }
     @Override

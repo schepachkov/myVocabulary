@@ -419,7 +419,7 @@ public class StorageElementary implements Storage {
 
         storage.put("пищевой","alimentary");
         storage.put("целеустремленный","ambitious");
-        storage.put("янатрь","amber");
+        storage.put("янтарь","amber");
         storage.put("совокупность","aggregate");
         storage.put("дуга, изгиб","arc");
         storage.put("действительный, фактичный","actual");
@@ -502,7 +502,6 @@ public class StorageElementary implements Storage {
         storage.put("Здоровье","health");
         storage.put("Богатство","wealth");
         storage.put("Полый","hollow");
-        storage.put("Ужасный","Horrible");
         storage.put("Отваратительный","disgusting");
 
         storage.put("Преимущество","advantage");
