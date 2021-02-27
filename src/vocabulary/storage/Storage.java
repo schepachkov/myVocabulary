@@ -1,4 +1,4 @@
-package sample.Storage;
+package vocabulary.storage;
 
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 

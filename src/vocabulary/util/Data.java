@@ -1,4 +1,4 @@
-package sample.UtilClasses;
+package vocabulary.util;
 
 //ONLY for output of my tableView in the ControllerShowData.class
 public class Data {

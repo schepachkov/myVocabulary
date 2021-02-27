@@ -1,7 +1,7 @@
-package sample.UtilClasses;
+package vocabulary.util;
 
 import javafx.application.Platform;
-import sample.Controllers.ControllerStudies;
+import vocabulary.controllers.ControllerStudies;
 
 import java.text.SimpleDateFormat;
 

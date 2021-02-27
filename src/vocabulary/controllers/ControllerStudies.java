@@ -1,17 +1,16 @@
-package sample.Controllers;
+package vocabulary.controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import sample.UtilClasses.Helper;
-import sample.UtilClasses.TimeCounter;
+import vocabulary.util.Helper;
+import vocabulary.util.TimeCounter;
 
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -29,13 +28,13 @@ public class ControllerStudies implements Runnable {
 
     //instead of contructor of ControllerStudies class
     public void setStorage(DualHashBidiMap<String, String> storage) {
-        this.storage = storage;
+        this.storage = Helper.keyEditorForParse(storage, true);
         storageSize = storage.size();
         synchronousQueue = new SynchronousQueue<>();
         repeatQueue = new LinkedList<>();
         forProgressInd = 1.0 / storage.size();
         createAndStartProgressBar();
-        prepareToPlaySound();
+        prepareToPlaySound("\\vocabulary\\audio\\notif.wav");
     }
 
 
@@ -54,9 +53,24 @@ public class ControllerStudies implements Runnable {
     @FXML
     private Label labelCounter;
 
-    public Label getLabelCounter() {
-        return labelCounter;
+    @FXML
+    public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
+        //imitation of turning off back_sapce
+        if (keyEvent.getCode().toString().equals("BACK_SPACE")){
+            String txt = txtFieldForWritten.getText();
+            txtFieldForWritten.setText(txt + " ");
+            txtFieldForWritten.positionCaret(txt.length() + 1);
+        }
+
+        if (!(keyEvent.getCode().toString().equals("TAB") || keyEvent.getCode().toString().equals("ENTER"))) {
+            if (storageSize > 0 || !repeatQueue.isEmpty()) {
+                if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
+                    synchronousQueue.put(keyEvent.getText().toLowerCase());
+                } else if (!keyEvent.getText().isEmpty()) deleteLast();
+            }
+        }
     }
+
 
     @Override
     public void run() {
@@ -158,28 +172,12 @@ public class ControllerStudies implements Runnable {
 
     private void playMusic(){
         forClipThread = new Thread(()-> {
-            clip.setFramePosition(0);
-            clip.start();
+            if (clip != null){
+                clip.setFramePosition(0);
+                clip.start();
+            }
         });
         forClipThread.start();
-    }
-
-    @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) throws InterruptedException {
-        //imitation of turning off back_sapce
-        if (keyEvent.getCode().toString().equals("BACK_SPACE")){
-            String txt = txtFieldForWritten.getText();
-            txtFieldForWritten.setText(txt + " ");
-            txtFieldForWritten.positionCaret(txt.length() + 1);
-        }
-
-        if (!(keyEvent.getCode().toString().equals("TAB") || keyEvent.getCode().toString().equals("ENTER"))) {
-            if (storageSize > 0 || !repeatQueue.isEmpty()) {
-                if (keyEvent.getText().matches("[a-zA-Z\\s]")) {
-                    synchronousQueue.put(keyEvent.getText().toLowerCase());
-                } else if (!keyEvent.getText().isEmpty()) deleteLast();
-            }
-        }
     }
 
     private void createAndStartProgressBar(){
@@ -197,22 +195,9 @@ public class ControllerStudies implements Runnable {
         thread.start();
     }
 
-    private void prepareToPlaySound(){
-        String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-        boolean flag = false;
-        Path dir = null;
-        if (path.contains("artifacts")){
-            path = path.substring(0,path.indexOf("artifacts"));
-            path += "\\production\\myVocabulary\\";
-        } else if (!path.contains("production")) {
-            File file = new File(path);
-            dir = file.toPath().getParent();
-            flag = true;
-        }
-        String resPath = "";
-        if (flag) resPath = dir + "\\notif.wav";
-        else resPath = path + "\\sample\\audio\\notif.wav";
-        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(resPath))){
+    private void prepareToPlaySound(String internalProjectSoundPath){
+        String pathToFile = Helper.getPathToFile(internalProjectSoundPath);
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(pathToFile))){
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -231,4 +216,9 @@ public class ControllerStudies implements Runnable {
         TimeCounter timeCounter = new TimeCounter(this);
         timeCounter.start();
     }
+
+    public Label getLabelCounter() {
+        return labelCounter;
+    }
+
 }

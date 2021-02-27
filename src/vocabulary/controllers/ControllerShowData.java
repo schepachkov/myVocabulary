@@ -1,4 +1,4 @@
-package sample.Controllers;
+package vocabulary.controllers;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -10,13 +10,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import sample.Storage.*;
-import sample.UtilClasses.Data;
-import sample.UtilClasses.Helper;
+import vocabulary.storage.*;
+import vocabulary.util.Data;
+import vocabulary.util.Helper;
 
-import java.util.Arrays;
-
-public class ControllerShowData{
+public class ControllerShowData {
 
     @FXML
     private TableColumn<Data, String> columnEn;
@@ -35,6 +33,9 @@ public class ControllerShowData{
 
     @FXML
     private RadioButton radioIrreg;
+
+    @FXML
+    private RadioButton radioPhraseVerbs;
 
     @FXML
     private Button btnExit;
@@ -68,40 +69,37 @@ public class ControllerShowData{
             else if (radioInter.isSelected()) storage = new StorageIntermediate();
             else if (radioIrreg.isSelected()) storage = new StorageIrregularVerbs();
             else if (radioHeap.isSelected()) storage = new StorageHeap();
+            else if (radioPhraseVerbs.isSelected()) storage = new StoragePhraseVerbs();
 
             updateTable();
         })).start();
     }
 
+    @FXML
+    void exitOnAction(ActionEvent event) {
+        Helper.closePreviewAndShowNextWindow(btnExit, "windowMain.fxml");
+    }
+
     private void updateTable() {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             tableView.refresh();
             tableView.scrollTo(0);
             lblCount.setText(storage.getStorage().size() + "");
         });
         ObservableList<Data> observableList = FXCollections.observableArrayList();
         DualHashBidiMap<String, String> dualHashBidiMap = storage.getStorage();
-        for (String key:dualHashBidiMap.keySet()) {
-            observableList.add(new Data(key,dualHashBidiMap.get(key)));
+        for (String key : dualHashBidiMap.keySet()) {
+            observableList.add(new Data(key, dualHashBidiMap.get(key)));
         }
         observableList.sort((o1, o2) -> o1.getValue().compareToIgnoreCase(o2.getValue()));
         tableView.setItems(observableList);
     }
 
-    @FXML
-    void exitOnAction(ActionEvent event) {
-        Helper.closePreviewAndShowNextWindow(btnExit,"windowMain.fxml");
-    }
-
-
-
-
-
-    private class MyCellFactory implements Callback<TableColumn, TableCell>{
+    private class MyCellFactory implements Callback<TableColumn, TableCell> {
 
         @Override
         public TableCell call(TableColumn param) {
-            return new TableCell<Data,String>(){
+            return new TableCell<Data, String>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
