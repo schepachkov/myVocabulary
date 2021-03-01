@@ -62,7 +62,7 @@
               <Font name="Arial" size="12.0" />
            </font>
         </Label>
-   <RadioButton fx:id="radioPhraseVerbs" layoutX="702.0" layoutY="265.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="127.0" text="Phrase verbs" toggleGroup="$group1">
+   <RadioButton fx:id="radioPhraseVerbs" layoutX="702.0" layoutY="265.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="127.0" text="Phrase verbs" toggleGroup="$group1" AnchorPane.rightAnchor="21.0">
       <font>
          <Font name="Arial" size="14.0" />
       </font>

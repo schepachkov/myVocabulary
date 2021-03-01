@@ -17,7 +17,7 @@ public class StorageIrregularVerbs implements Storage {
 
 
     static {
-        String filePath = Helper.getPathToFile("\\vocabulary\\docs\\irregularVerbs.docx");
+        String filePath = Helper.getInternalPathToFile("\\vocabulary\\docs\\irregularVerbs.docx");
         File file = new File(filePath);
         Helper.fillStorage(file, storage);
     }

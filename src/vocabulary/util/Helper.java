@@ -60,8 +60,14 @@ public class Helper {
         stage.setMinWidth(600);
     }
 
-    public static String getPathToFile(String internalProjectPath){
-        String soundName = internalProjectPath.substring(internalProjectPath.lastIndexOf("\\"));
+    public static String getOuterPathToFile(String outerFilePath){
+        String pathToProject = Helper.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        String pathToGeneralDir = pathToProject.substring(0, pathToProject.indexOf("/myVocabulary"));
+        return pathToGeneralDir + outerFilePath;
+    }
+
+    public static String getInternalPathToFile(String internalProjectPath){
+        String fileName = internalProjectPath.substring(internalProjectPath.lastIndexOf("\\"));
         String path = Helper.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         boolean flag = false;
         Path dir = null;
@@ -74,7 +80,7 @@ public class Helper {
             flag = true;
         }
         String resPath = "";
-        if (flag) resPath = dir + soundName;
+        if (flag) resPath = dir + fileName;
         else resPath = path + internalProjectPath;
         return resPath;
     }

@@ -9,7 +9,7 @@ public class StorageElementary implements Storage {
     private static DualHashBidiMap<String,String> storage = new DualHashBidiMap<>();
 
     static {
-        String filePath = Helper.getPathToFile("\\vocabulary\\docs\\elementary.docx");
+        String filePath = Helper.getOuterPathToFile("\\docs\\elementary.docx");
         File file = new File(filePath);
         Helper.fillStorage(file, storage);
     }

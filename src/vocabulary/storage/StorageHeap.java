@@ -9,7 +9,7 @@ public class StorageHeap implements Storage{
     private static DualHashBidiMap<String,String> storage = new DualHashBidiMap<>();
 
     static {
-        String filePath = Helper.getPathToFile("\\vocabulary\\docs\\heap.docx");
+        String filePath = Helper.getInternalPathToFile("\\vocabulary\\docs\\heap.docx");
         File file = new File(filePath);
         Helper.fillStorage(file, storage);
     }

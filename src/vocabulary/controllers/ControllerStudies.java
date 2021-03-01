@@ -196,7 +196,7 @@ public class ControllerStudies implements Runnable {
     }
 
     private void prepareToPlaySound(String internalProjectSoundPath){
-        String pathToFile = Helper.getPathToFile(internalProjectSoundPath);
+        String pathToFile = Helper.getInternalPathToFile(internalProjectSoundPath);
         try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(pathToFile))){
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
